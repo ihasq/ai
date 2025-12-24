@@ -3,12 +3,15 @@
 AI TypeScript tools compatible with OpenAI API.
 
 ```typescript
-import { AI, Gemini } from "@ihasq/ai";
+import { AI } from "@ihasq/ai";
+import { google } from "@ai-sdk/google"
 import { stdout, env } from "node:process"
 
-const gemini = new AI(Gemini('2.5-flash'), env.GEMINI_API_KEY);
+const gemini = new AI(google('gemini-2.5-flash'), env.GEMINI_API_KEY, {
+    system: ""
+});
 
-const stream = await gemini`Let me know what you can.`.stream('text');
+const stream = await gemini`sum 1 and 2. if you want to add two number, call ${(a, b) => a + b}.`;
 
 for await(const text of stream) {
 	stdout.write(text);
