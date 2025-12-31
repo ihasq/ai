@@ -13,16 +13,9 @@ import { write } from "node:process/stdout"
 const context = ai`sum 1 and 2. if you want to add two number, call ${(a, b) => a + b}.`;
 
 
-// 2. Generate stream
+// 2. Display output
 
-const stream = context.streamText(google('gemini-2.5-flash'));
-
-
-// 3. Display it
-
-for await(const text of stream) {
-	write(text);
-}
+for await(const text of output.text()) write(text);
 ```
 
 ## Install
