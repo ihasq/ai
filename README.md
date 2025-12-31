@@ -1,20 +1,27 @@
 # ihasq/ai
 
-AI TypeScript tools compatible with OpenAI API.
+AI TypeScript tools compatible with AI SDK by Vercel.
 
 ```typescript
-import { AI } from "@ihasq/ai";
+import { ai } from "@ihasq/ai";
 import { google } from "@ai-sdk/google"
-import { stdout, env } from "node:process"
+import { write } from "node:process/stdout"
 
-const gemini = new AI(google('gemini-2.5-flash'), env.GEMINI_API_KEY, {
-    system: ""
-});
 
-const stream = await gemini`sum 1 and 2. if you want to add two number, call ${(a, b) => a + b}.`;
+// 1. Build your context
+
+const context = ai`sum 1 and 2. if you want to add two number, call ${(a, b) => a + b}.`;
+
+
+// 2. Generate stream
+
+const stream = context.streamText(google('gemini-2.5-flash'));
+
+
+// 3. Display it
 
 for await(const text of stream) {
-	stdout.write(text);
+	write(text);
 }
 ```
 

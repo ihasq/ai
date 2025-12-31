@@ -1,5 +1,3 @@
-import { OpenAI } from "openai";
-
 // const defaultConfig = {
 // 	key: undefined,
 // 	think: false,
@@ -20,26 +18,8 @@ import { OpenAI } from "openai";
 // 	}
 // );
 
-class AI {
-	constructor(openAICompatibleEndpoint: string) {
-		return function(instructionTSA: TemplateStringsArray, instructionValues: any[]) {
-			const promise = new Promise(async r => {
-				queueMicrotask;
-				
-			});
-			const proxy = new Proxy(promise, {
-				get(_, prop) {
-
-				}
-			});
-		}
-	}
-}
-
-class Chat extends AI {
-
-}
-
-const Gemini = function(version: string) {
-
+export function ai(s, ...v) {
+	return this({
+		prompt: ""
+	})
 }
