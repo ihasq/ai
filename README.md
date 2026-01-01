@@ -15,7 +15,9 @@ const context = ai`sum 1 and 2. if you want to add two number, call ${(a, b) => 
 
 // 2. Display output
 
-for await(const text of output.text()) write(text);
+for await(const text of output.text(google('gemini-3-flash-preview')) {
+  write(text);
+}
 ```
 
 ## Install
